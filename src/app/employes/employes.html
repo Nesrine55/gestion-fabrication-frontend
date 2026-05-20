@@ -1,1 +1,90 @@
-<p>employes works!</p>
+<div class="container">
+
+  <h1>Gestion des Employés</h1>
+
+  <form (ngSubmit)="saveEmploye()">
+
+    <input
+      type="text"
+      placeholder="Nom employé"
+      [(ngModel)]="employe.nom"
+      name="nom"
+      required
+    >
+
+    <input
+      type="text"
+      placeholder="Poste"
+      [(ngModel)]="employe.poste"
+      name="poste"
+      required
+    >
+
+    <select
+      [(ngModel)]="employe.machine"
+      name="machine"
+      required
+    >
+
+      <option [ngValue]="null">
+        Choisir une machine
+      </option>
+
+      <option
+        *ngFor="let m of machines"
+        [ngValue]="m"
+      >
+        {{ m.nom }}
+      </option>
+
+    </select>
+
+    <button type="submit">
+      {{ editMode ? 'Modifier' : 'Ajouter' }}
+    </button>
+
+  </form>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Machine</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let e of employes">
+
+        <td>{{ e.id }}</td>
+
+        <td>{{ e.nom }}</td>
+
+        <td>{{ e.poste }}</td>
+
+        <td>{{ e.machine?.nom }}</td>
+
+      <td class="actions">
+
+  <button (click)="editEmploye(e)">
+    Modifier
+  </button>
+
+  <button (click)="deleteEmploye(e.id)">
+    Supprimer
+  </button>
+
+</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

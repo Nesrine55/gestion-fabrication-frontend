@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { Produits } from './produits/produits';
 import { Machines } from './machines/machines';
+import { EmployeComponent } from './employes/employes';
 
 export const routes: Routes = [
 
@@ -19,6 +20,10 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'produits',
     pathMatch: 'full'
-  }
+  },
+  {
+  path: 'employes',
+  component: EmployeComponent
+}
 
 ];
