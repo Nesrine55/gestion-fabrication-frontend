@@ -1,0 +1,72 @@
+<div class="container">
+
+  <h1>Gestion des Produits</h1>
+
+  <div class="form-card">
+
+    <h2>Ajouter un produit</h2>
+
+    <div class="form-group">
+      <input type="text" placeholder="Nom du produit" [(ngModel)]="produit.nom">
+
+      <input type="text" placeholder="Type" [(ngModel)]="produit.type">
+
+      <input type="number" placeholder="Stock" [(ngModel)]="produit.stock">
+
+      <input type="text" placeholder="Fournisseur" [(ngModel)]="produit.fournisseur">
+    </div>
+
+    <button class="btn-add" (click)="addProduit()">
+
+  {{ editMode ? 'Modifier Produit' : 'Ajouter Produit' }}
+
+</button>
+
+  </div>
+
+  <div class="table-card">
+
+    <h2>Liste des Produits</h2>
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Stock</th>
+        <th>Fournisseur</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let p of produits">
+
+        <td>{{ p.id }}</td>
+        <td>{{ p.nom }}</td>
+        <td>{{ p.type }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.fournisseur }}</td>
+
+        <td>
+           <button class="btn-edit"
+          (click)="editProduit(p)">
+    Modifier
+  </button>
+
+  <button class="btn-delete"
+          (click)="deleteProduit(p.id)">
+    Supprimer
+  </button>
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

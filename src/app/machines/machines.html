@@ -1,0 +1,80 @@
+<div class="container">
+
+  <h1>Gestion des Machines</h1>
+
+  <div class="form-card">
+
+    <h2>Ajouter une machine</h2>
+
+    <div class="form-group">
+
+      <input type="text"
+             placeholder="Nom Machine"
+             [(ngModel)]="machine.nom">
+
+      <input type="text"
+             placeholder="Etat"
+             [(ngModel)]="machine.etat">
+
+      <input type="date"
+             [(ngModel)]="machine.derniereMaintenance">
+
+    </div>
+
+    <button class="btn-add"
+            (click)="addMachine()">
+
+      {{ editMode ? 'Modifier Machine' : 'Ajouter Machine' }}
+
+    </button>
+
+  </div>
+
+  <div class="table-card">
+
+    <h2>Liste des Machines</h2>
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Etat</th>
+        <th>Dernière Maintenance</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let m of machines">
+
+        <td>{{ m.id }}</td>
+        <td>{{ m.nom }}</td>
+        <td>{{ m.etat }}</td>
+        <td>{{ m.derniereMaintenance }}</td>
+
+        <td>
+
+          <button class="btn-edit"
+                  (click)="editMachine(m)">
+            Modifier
+          </button>
+
+          <button class="btn-delete"
+                  (click)="deleteMachine(m.id)">
+            Supprimer
+          </button>
+
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
