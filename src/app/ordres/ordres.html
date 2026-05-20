@@ -1,1 +1,129 @@
-<p>ordres works!</p>
+<div class="container">
+
+  <h1>Gestion des Ordres de Fabrication</h1>
+
+  <form (ngSubmit)="saveOrdre()">
+
+    <input
+      type="text"
+      placeholder="Projet"
+      [(ngModel)]="ordre.projet"
+      name="projet"
+      required
+    >
+
+    <select
+      [(ngModel)]="ordre.produit"
+      name="produit"
+      required
+    >
+
+      <option [ngValue]="null">
+        Choisir un produit
+      </option>
+
+      <option
+        *ngFor="let p of produits"
+        [ngValue]="p"
+      >
+        {{ p.nom }}
+      </option>
+
+    </select>
+
+    <input
+      type="number"
+      placeholder="Quantité"
+      [(ngModel)]="ordre.quantite"
+      name="quantite"
+      required
+    >
+
+    <input
+      type="date"
+      [(ngModel)]="ordre.date"
+      name="date"
+      required
+    >
+
+    <select
+      [(ngModel)]="ordre.etat"
+      name="etat"
+      required
+    >
+
+      <option value="">
+        Choisir un état
+      </option>
+
+      <option value="En attente">
+        En attente
+      </option>
+
+      <option value="En cours">
+        En cours
+      </option>
+
+      <option value="Terminé">
+        Terminé
+      </option>
+
+    </select>
+
+    <button type="submit">
+      {{ editMode ? 'Modifier' : 'Ajouter' }}
+    </button>
+
+  </form>
+
+  <table>
+
+    <thead>
+
+      <tr>
+        <th>ID</th>
+        <th>Projet</th>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Date</th>
+        <th>État</th>
+        <th>Actions</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let o of ordres; trackBy: trackById">
+
+        <td>{{ o.id }}</td>
+
+        <td>{{ o.projet }}</td>
+
+        <td>{{ o.produit?.nom }}</td>
+
+        <td>{{ o.quantite }}</td>
+
+        <td>{{ o.date }}</td>
+
+        <td>{{ o.etat }}</td>
+
+        <td class="actions">
+
+          <button (click)="editOrdre(o)">
+            Modifier
+          </button>
+
+          <button (click)="deleteOrdre(o.id)">
+            Supprimer
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

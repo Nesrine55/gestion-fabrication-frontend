@@ -95,4 +95,51 @@ export class Machines implements OnInit {
 
     this.editMode = false;
   }
+
+
+  mettreMaintenance(machine: any) {
+
+  machine.etat = 'En maintenance';
+
+  machine.derniereMaintenance =
+    new Date().toISOString().split('T')[0];
+
+  this.machineService
+    .updateMachine(machine.id, machine)
+    .subscribe(() => {
+
+      this.getMachines();
+
+    });
+
+}
+
+mettreDisponible(machine: any) {
+
+  machine.etat = 'Disponible';
+
+  this.machineService
+    .updateMachine(machine.id, machine)
+    .subscribe(() => {
+
+      this.getMachines();
+
+    });
+
+}
+
+mettrePanne(machine: any) {
+
+  machine.etat = 'En panne';
+
+  this.machineService
+    .updateMachine(machine.id, machine)
+    .subscribe(() => {
+
+      this.getMachines();
+
+    });
+
+}
+  
 }

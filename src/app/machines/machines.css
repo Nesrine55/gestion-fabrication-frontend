@@ -136,4 +136,72 @@ tbody tr:hover {
     font-size: 14px;
   }
 
+
+
+}
+
+.disponible {
+  background: #2ecc71;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.maintenance {
+  background: #f39c12;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.panne {
+  background: #e74c3c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-maintenance {
+  background: #f39c12;
+  color: white;
+}
+
+.btn-maintenance:hover {
+  background: #d97706;
+}
+
+.btn-disponible {
+  background: #2ecc71;
+  color: white;
+}
+
+.btn-disponible:hover {
+  background: #27ae60;
+}
+
+.btn-panne {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-panne:hover {
+  background: #c0392b;
 }

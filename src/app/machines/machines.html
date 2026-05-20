@@ -52,23 +52,49 @@
 
         <td>{{ m.id }}</td>
         <td>{{ m.nom }}</td>
-        <td>{{ m.etat }}</td>
-        <td>{{ m.derniereMaintenance }}</td>
-
         <td>
 
-          <button class="btn-edit"
-                  (click)="editMachine(m)">
-            Modifier
-          </button>
-
-          <button class="btn-delete"
-                  (click)="deleteMachine(m.id)">
-            Supprimer
-          </button>
+          <span
+            [ngClass]="{
+              'disponible': m.etat === 'Disponible',
+              'maintenance': m.etat === 'En maintenance',
+              'panne': m.etat === 'En panne'
+            }"
+          >
+            {{ m.etat }}
+          </span>
 
         </td>
+        <td>{{ m.derniereMaintenance }}</td>
 
+       <td class="actions">
+
+  <button class="btn-edit"
+          (click)="editMachine(m)">
+    Modifier
+  </button>
+
+  <button class="btn-delete"
+          (click)="deleteMachine(m.id)">
+    Supprimer
+  </button>
+
+  <button class="btn-maintenance"
+          (click)="mettreMaintenance(m)">
+    Maintenance
+  </button>
+
+  <button class="btn-disponible"
+          (click)="mettreDisponible(m)">
+    Disponible
+  </button>
+
+  <button class="btn-panne"
+          (click)="mettrePanne(m)">
+    En panne
+  </button>
+
+</td>
       </tr>
 
       </tbody>
